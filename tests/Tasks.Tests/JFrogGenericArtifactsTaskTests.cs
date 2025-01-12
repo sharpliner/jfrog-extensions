@@ -31,6 +31,13 @@ public class JfrogGenericArtifactTaskTests
     }
 
     [Fact]
+    public Task Download_Command() {
+        var task = _builder.Download("serviceConnection")
+            .TaskConfiguration("fileSpec");
+        return Verify(GetYaml(task));
+    }
+
+    [Fact]
     public Task Upload_Full_Command()
     {
         var task = _builder.Upload("serviceConnection")
@@ -53,9 +60,49 @@ public class JfrogGenericArtifactTaskTests
             ProjectKey = "projectKey",
             IncludeEnvVars = true,
             FailNoOp = true,
-            WorkingDirectory = Path.GetTempPath()
+            WorkingDirectory = Path.GetTempPath(),
+            SetDebianProps = true,
+            DebArchitecture = "amd64",
+            DebComponent = "main",
+            DebDistribution = "focal",
+            PreserveSymlinks = true,
+            SyncDeletesPathRemote = "libs-generic-local/",
+            
         };
 
+        return Verify(GetYaml(task));
+    }
+
+    [Fact]
+    public Task Download_Full_Command() {
+        var task = _builder.Download("serviceConnection")
+            .TaskConfiguration("""
+                               {
+                                       "files": [
+                                         {
+                                           "pattern": "libs-generic-local/*.zip",
+                                           "target": "dependencies/files/"
+                                         }
+                                       ]
+                                     }
+                               """) with
+        {
+            CollectBuildInfo = true,
+            BuildName = "ThisBuild",
+            BuildNumber = "1.0.0",
+            ReplaceSpecVars = true,
+            SpecVars = "key1=value1;key2=value2",
+            ProjectKey = "projectKey",
+            Module = "a module",
+            IncludeEnvVars = true,
+            FailNoOp = true,
+            WorkingDirectory = Path.GetTempPath(),
+            InsecureTls = true,
+            Threads = 5,
+            Retries = 3,
+            DryRun = true
+            
+        };
         return Verify(GetYaml(task));
     }
 
