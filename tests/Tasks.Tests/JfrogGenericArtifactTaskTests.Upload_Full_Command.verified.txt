@@ -1,0 +1,26 @@
+﻿jobs:
+- job: job
+  steps:
+  - task: JFrogGenericArtifacts@1
+    inputs:
+      command: Upload
+      connection: serviceConnection
+      specSource: taskConfiguration
+      fileSpec: |-
+        {
+                "files": [
+                  {
+                    "pattern": "libs-generic-local/*.zip",
+                    "target": "dependencies/files/"
+                  }
+                ]
+              }
+      collectBuildInfo: true
+      buildName: ThisBuild
+      buildNumber: 1.0.0
+      replaceSpecVars: true
+      specVars: key1=value1;key2=value2
+      projectKey: projectKey
+      includeEnvVars: true
+      failNoOp: true
+      workingDirectory: {TempPath}

@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>Sharpliner.Extensions.JFrog</AssemblyName>
+    <RootNamespace>Sharpliner.Extensions.JFrog</RootNamespace>
+    <Authors>flcdrg</Authors>
+    <PackageProjectUrl>https://github.com/flcdrg/sharpliner-tasks-jfrog</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/flcdrg/sharpliner-tasks-jfrog</RepositoryUrl>
+    <PackageTags>Sharpliner;Azure DevOps;Azure Pipelines;</PackageTags>
+    <Description>A library that implements tasks for use with Sharpliner to generate Azure Pipelines YAML
+for the JFrog Azure DevOps extension.</Description>
+  </PropertyGroup>
+
+    <ItemGroup>
+        <Using Include="Sharpliner.AzureDevOps.Tasks" />
+        <Using Include="Sharpliner.Extensions.JFrog" />
+        <Using Include="YamlDotNet.Serialization" />
+    </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Sharpliner" Version="1.7.2" />
+  </ItemGroup>
+
+</Project>

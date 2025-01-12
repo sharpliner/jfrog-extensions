@@ -1,0 +1,9 @@
+﻿jobs:
+- job: job
+  steps:
+  - task: JFrogGenericArtifacts@1
+    inputs:
+      command: Upload
+      connection: serviceConnection
+      specSource: taskConfiguration
+      fileSpec: fileSpec
