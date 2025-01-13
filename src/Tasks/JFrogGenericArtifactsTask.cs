@@ -1,8 +1,8 @@
 ﻿namespace Sharpliner.Extensions.JFrog;
 
-public record JFrogGenericArtifactsTask : AzureDevOpsTask
+public abstract record JFrogGenericArtifactsTask : AzureDevOpsTask
 {
-    public JFrogGenericArtifactsTask(string command, string connection) : base("JFrogGenericArtifacts@1")
+    protected JFrogGenericArtifactsTask(string command, string connection) : base("JFrogGenericArtifacts@1")
     {
         SetProperty("command", command);
         Connection = connection;

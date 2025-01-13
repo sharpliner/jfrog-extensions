@@ -3,7 +3,7 @@
   steps:
   - task: JFrogGenericArtifacts@1
     inputs:
-      command: Upload
+      command: Download
       connection: serviceConnection
       specSource: taskConfiguration
       fileSpec: |-
@@ -21,12 +21,11 @@
       replaceSpecVars: true
       specVars: key1=value1;key2=value2
       projectKey: projectKey
+      module: a module
       includeEnvVars: true
       failNoOp: true
       workingDirectory: {TempPath}
-      setDebianProps: true
-      debArchitecture: amd64
-      debComponent: main
-      debDistribution: focal
-      preserveSymlinks: true
-      syncDeletesPathRemote: libs-generic-local/
+      insecureTls: true
+      threads: 5
+      retries: 3
+      dryRun: true
