@@ -21,7 +21,7 @@ for the JFrog Azure DevOps extension.</Description>
     </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sharpliner" Version="1.7.2" />
+    <PackageReference Include="Sharpliner" Version="1.7.3" />
   </ItemGroup>
 
 </Project>
