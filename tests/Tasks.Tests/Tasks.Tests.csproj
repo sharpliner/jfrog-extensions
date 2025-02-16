@@ -17,6 +17,9 @@
     For more information on Microsoft Testing Platform support in xUnit.net, please visit:
       https://xunit.net/docs/getting-started/v3/microsoft-testing-platform
     -->
+
+    <!-- We do want Sharpliner to run here -->
+    <SkipSharpliner>False</SkipSharpliner>
   </PropertyGroup>
 
   <ItemGroup>

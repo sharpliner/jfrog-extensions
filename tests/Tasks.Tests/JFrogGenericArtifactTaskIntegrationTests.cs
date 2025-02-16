@@ -3,7 +3,7 @@ using static Sharpliner.Extensions.JFrogTasks.Builders.JFrogTasks;
 
 namespace Sharpliner.Extensions.JFrogTasks.Tests;
 
-class PullRequestPipeline : SingleStagePipelineDefinition
+public class PullRequestPipeline : SingleStagePipelineDefinition
 {
     // Say where to publish the YAML to
     public override string TargetFile => "eng/pr.yml";
@@ -21,8 +21,26 @@ class PullRequestPipeline : SingleStagePipelineDefinition
                 Steps =
                 [
                     JFrog.GenericArtifacts.Download("Artifactory")
-                        .TaskConfiguration("filespec")
-                        ,
+                        .TaskConfiguration("""
+                        {
+                            "files": [
+                                {
+                                    "pattern": "libs-generic-local/*.zip",
+                                    "target": "dependencies/files/"
+                                }
+                            ]
+                        }
+                        """),
+                    JFrog.GenericArtifacts.Upload("Artifactory")
+                            .TaskConfiguration("""
+
+                            """) with
+                            {
+                                CollectBuildInfo = true,
+                                BuildName = "MyBuildName",
+                                BuildNumber = "1.0.0",
+                                FailNoOp = true,
+                            }
                 ]
             }
         ],

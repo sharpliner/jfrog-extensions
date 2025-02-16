@@ -42,15 +42,15 @@ public class JfrogGenericArtifactTaskTests
     {
         var task = _builder.Upload("serviceConnection")
             .TaskConfiguration("""
-                               {
-                                       "files": [
-                                         {
-                                           "pattern": "libs-generic-local/*.zip",
-                                           "target": "dependencies/files/"
-                                         }
-                                       ]
-                                     }
-                               """) with
+            {
+               "files": [
+                 {
+                   "pattern": "libs-generic-local/*.zip",
+                   "target": "dependencies/files/"
+                 }
+               ]
+            }
+            """) with
         {
             CollectBuildInfo = true,
             BuildName = "ThisBuild",
@@ -77,36 +77,35 @@ public class JfrogGenericArtifactTaskTests
     public Task Download_Full_Command() {
         var task = _builder.Download("serviceConnection")
             .TaskConfiguration("""
-                               {
-                                       "files": [
-                                         {
-                                           "pattern": "libs-generic-local/*.zip",
-                                           "target": "dependencies/files/"
-                                         }
-                                       ]
-                                     }
-                               """) with
-        {
-            CollectBuildInfo = true,
-            BuildName = "ThisBuild",
-            BuildNumber = "1.0.0",
-            ReplaceSpecVars = true,
-            SpecVars = "key1=value1;key2=value2",
-            ProjectKey = "projectKey",
-            Module = "a module",
-            IncludeEnvVars = true,
-            FailNoOp = true,
-            WorkingDirectory = Path.GetTempPath(),
-            InsecureTls = true,
-            Threads = 5,
-            Retries = 3,
-            DryRun = true,
-            SplitCount = 4,
-            MinSplit = 2048,
-            ValidateSymlinks = true,
-            SyncDeletesPathLocal = "libs-generic-local/",
-
-        };
+            {
+                "files": [
+                    {
+                        "pattern": "libs-generic-local/*.zip",
+                        "target": "dependencies/files/"
+                    }
+                ]
+            }
+            """) with
+            {
+                CollectBuildInfo = true,
+                BuildName = "ThisBuild",
+                BuildNumber = "1.0.0",
+                ReplaceSpecVars = true,
+                SpecVars = "key1=value1;key2=value2",
+                ProjectKey = "projectKey",
+                Module = "a module",
+                IncludeEnvVars = true,
+                FailNoOp = true,
+                WorkingDirectory = Path.GetTempPath(),
+                InsecureTls = true,
+                Threads = 5,
+                Retries = 3,
+                DryRun = true,
+                SplitCount = 4,
+                MinSplit = 2048,
+                ValidateSymlinks = true,
+                SyncDeletesPathLocal = "libs-generic-local/",
+            };
         return Verify(GetYaml(task));
     }
 
