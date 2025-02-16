@@ -100,8 +100,12 @@ public class JfrogGenericArtifactTaskTests
             InsecureTls = true,
             Threads = 5,
             Retries = 3,
-            DryRun = true
-            
+            DryRun = true,
+            SplitCount = 4,
+            MinSplit = 2048,
+            ValidateSymlinks = true,
+            SyncDeletesPathLocal = "libs-generic-local/",
+
         };
         return Verify(GetYaml(task));
     }
