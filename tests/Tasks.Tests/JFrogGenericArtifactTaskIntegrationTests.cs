@@ -18,6 +18,7 @@ public class PullRequestPipeline : SingleStagePipelineDefinition
             new Job("Build")
             {
                 Pool = new HostedPool("Azure Pipelines", "windows-latest"),
+                // begin-snippet: JFrogSteps
                 Steps =
                 [
                     JFrog.GenericArtifacts.Download("Artifactory")
@@ -31,6 +32,7 @@ public class PullRequestPipeline : SingleStagePipelineDefinition
                             ]
                         }
                         """),
+
                     JFrog.GenericArtifacts.Upload("Artifactory")
                             .TaskConfiguration("""
 
@@ -40,8 +42,18 @@ public class PullRequestPipeline : SingleStagePipelineDefinition
                                 BuildName = "MyBuildName",
                                 BuildNumber = "1.0.0",
                                 FailNoOp = true,
-                            }
+                            },
+
+                    JFrog.PublishBuildInfo("Artifactory") with
+                    {
+                        BuildName = "MyBuildName",
+                        BuildNumber = "1.0.0",
+                        ProjectKey = "MyProject",
+                        ExcludeEnvVars = "*password*;*secret*"
+
+                    }
                 ]
+                // end-snippet
             }
         ],
     };
