@@ -1,7 +1,7 @@
 using Sharpliner.AzureDevOps;
-using Sharpliner.Extensions.JFrog.Builders;
+using Sharpliner.Extensions.JFrogTasks.Builders;
 
-namespace Sharpliner.Extensions.JFrog.Tests;
+namespace Sharpliner.Extensions.JFrogTasks.Tests;
 
 public class JfrogGenericArtifactTaskTests
 {
