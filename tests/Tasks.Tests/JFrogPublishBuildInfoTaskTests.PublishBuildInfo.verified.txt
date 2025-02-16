@@ -1,0 +1,10 @@
+﻿jobs:
+- job: job
+  steps:
+  - task: JFrogPublishBuildInfo@1
+    inputs:
+      artifactoryConnection: Artifactory
+      buildName: ThisBuild
+      buildNumber: 1.0.0
+      projectKey: projectKey
+      excludeEnvVars: '*password*;*psw*;*secret*;*key*;*token*;*auth*;*shush*'

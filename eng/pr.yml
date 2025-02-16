@@ -41,3 +41,11 @@ jobs:
       buildName: MyBuildName
       buildNumber: 1.0.0
       failNoOp: true
+
+  - task: JFrogPublishBuildInfo@1
+    inputs:
+      artifactoryConnection: Artifactory
+      buildName: MyBuildName
+      buildNumber: 1.0.0
+      projectKey: MyProject
+      excludeEnvVars: '*password*;*secret*'
