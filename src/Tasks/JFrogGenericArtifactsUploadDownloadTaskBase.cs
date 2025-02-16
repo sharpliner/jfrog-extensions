@@ -93,17 +93,6 @@ public abstract record JFrogGenericArtifactsUploadDownloadTaskBase : JFrogGeneri
     }
 
     /// <summary>
-    /// Select if you'd like the task to only indicates which artifacts would have been affected.
-    /// If not, the command is fully executed as specified
-    /// </summary>
-    [YamlIgnore]
-    public bool? DryRun
-    {
-        get => GetBool("dryRun", false);
-        init => SetProperty("dryRun", value);
-    }
-
-    /// <summary>
     /// Select to include environment variables in the published build info.
     /// </summary>
     [YamlIgnore]
@@ -118,5 +107,16 @@ public abstract record JFrogGenericArtifactsUploadDownloadTaskBase : JFrogGeneri
             }
             SetProperty("includeEnvVars", value);
         }
+    }
+
+    /// <summary>
+    /// Select if you'd like the task to only indicates which artifacts would have been affected.
+    /// If not, the command is fully executed as specified
+    /// </summary>
+    [YamlIgnore]
+    public bool? DryRun
+    {
+        get => GetBool("dryRun", false);
+        init => SetProperty("dryRun", value);
     }
 }

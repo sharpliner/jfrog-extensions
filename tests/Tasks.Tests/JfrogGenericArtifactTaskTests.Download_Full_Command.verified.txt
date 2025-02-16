@@ -29,3 +29,7 @@
       threads: 5
       retries: 3
       dryRun: true
+      splitCount: 4
+      minSplit: 2048
+      validateSymlinks: true
+      syncDeletesPathLocal: libs-generic-local/
