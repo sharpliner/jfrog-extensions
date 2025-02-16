@@ -1,4 +1,4 @@
-namespace Sharpliner.Extensions.JFrog;
+namespace Sharpliner.Extensions.JFrogTasks;
 
 public record JFrogGenericArtifactsUploadTask : JFrogGenericArtifactsUploadDownloadTaskBase
 {

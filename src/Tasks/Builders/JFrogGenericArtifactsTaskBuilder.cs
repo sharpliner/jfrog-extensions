@@ -1,4 +1,14 @@
-﻿namespace Sharpliner.Extensions.JFrog.Builders;
+﻿namespace Sharpliner.Extensions.JFrogTasks.Builders;
+
+public static class JFrogTasks
+{
+    public static JFrogTaskBuilder JFrog { get; } = new();
+}
+
+public class JFrogTaskBuilder
+{
+    public JFrogGenericArtifactsTaskBuilder GenericArtifacts => new();
+}
 
 public class JFrogGenericArtifactsTaskBuilder
 {

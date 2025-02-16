@@ -1,0 +1,43 @@
+###
+### DO NOT MODIFY THIS FILE!
+###
+### This YAML was auto-generated from PullRequestPipeline
+### To make changes, change the C# definition and rebuild its project
+###
+
+pr:
+  branches:
+    include:
+    - main
+
+jobs:
+- job: Build
+  pool:
+    name: Azure Pipelines
+    vmImage: windows-latest
+  steps:
+  - task: JFrogGenericArtifacts@1
+    inputs:
+      command: Download
+      connection: Artifactory
+      specSource: taskConfiguration
+      fileSpec: |-
+        {
+            "files": [
+                {
+                    "pattern": "libs-generic-local/*.zip",
+                    "target": "dependencies/files/"
+                }
+            ]
+        }
+
+  - task: JFrogGenericArtifacts@1
+    inputs:
+      command: Upload
+      connection: Artifactory
+      specSource: taskConfiguration
+      fileSpec: ''
+      collectBuildInfo: true
+      buildName: MyBuildName
+      buildNumber: 1.0.0
+      failNoOp: true

@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AssemblyName>Sharpliner.Extensions.JFrog</AssemblyName>
-    <RootNamespace>Sharpliner.Extensions.JFrog</RootNamespace>
+    <RootNamespace>Sharpliner.Extensions.JFrogTasks</RootNamespace>
     <Authors>flcdrg</Authors>
     <PackageProjectUrl>https://github.com/flcdrg/sharpliner-tasks-jfrog</PackageProjectUrl>
     <RepositoryUrl>https://github.com/flcdrg/sharpliner-tasks-jfrog</RepositoryUrl>
@@ -16,7 +16,7 @@ for the JFrog Azure DevOps extension.</Description>
 
     <ItemGroup>
         <Using Include="Sharpliner.AzureDevOps.Tasks" />
-        <Using Include="Sharpliner.Extensions.JFrog" />
+        <Using Include="Sharpliner.Extensions.JFrogTasks" />
         <Using Include="YamlDotNet.Serialization" />
     </ItemGroup>
 

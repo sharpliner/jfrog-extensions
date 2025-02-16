@@ -8,13 +8,13 @@
       specSource: taskConfiguration
       fileSpec: |-
         {
-                "files": [
-                  {
-                    "pattern": "libs-generic-local/*.zip",
-                    "target": "dependencies/files/"
-                  }
-                ]
-              }
+           "files": [
+             {
+               "pattern": "libs-generic-local/*.zip",
+               "target": "dependencies/files/"
+             }
+           ]
+        }
       collectBuildInfo: true
       buildName: ThisBuild
       buildNumber: 1.0.0
