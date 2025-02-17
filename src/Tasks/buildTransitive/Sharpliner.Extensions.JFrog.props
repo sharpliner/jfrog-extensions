@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+<!-- global usings -->
+  <ItemGroup>
+    <Using Include="Sharpliner.Extensions.JFrogTasks.Builders.JFrogTasks" Static="True" />
+  </ItemGroup>
+</Project>
