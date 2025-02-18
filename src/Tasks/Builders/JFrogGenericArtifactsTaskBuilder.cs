@@ -1,4 +1,5 @@
-﻿namespace Sharpliner.Extensions.JFrogTasks.Builders;
+﻿#pragma warning disable CA1822
+namespace Sharpliner.Extensions.JFrogTasks.Builders;
 
 public class JFrogGenericArtifactsTaskBuilder
 {
@@ -7,9 +8,14 @@ public class JFrogGenericArtifactsTaskBuilder
     }
 
     /// <summary>
-    /// Creates the <c>Upload</c> command version of the JFrogGenericArtifacts task.
+    /// The <c>Upload</c> command
     /// </summary>
+    /// <param name="connection">Artifactory service connection</param>
     public JFrogGenericArtifactsUploadTaskBuilder Upload(string connection) => new(connection);
 
+    /// <summary>
+    /// The <c>Download</c> command
+    /// </summary>
+    /// <param name="connection">Artifactory service connection</param>
     public JFrogGenericArtifactsDownloadTaskBuilder Download(string connection) => new(connection);
 }

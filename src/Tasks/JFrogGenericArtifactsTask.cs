@@ -152,12 +152,3 @@ public abstract record JFrogGenericArtifactsTask : AzureDevOpsTask
         init => SetProperty("workingDirectory", value);
     }
 }
-
-public enum SpecSources
-{
-    [YamlMember(Alias = "taskConfiguration")]
-    TaskConfiguration,
-
-    [YamlMember(Alias = "file")]
-    File
-}
