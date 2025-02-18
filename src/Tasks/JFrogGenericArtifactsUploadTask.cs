@@ -1,5 +1,8 @@
 namespace Sharpliner.Extensions.JFrogTasks;
 
+/// <summary>
+/// Uploads artifacts to JFrog Artifactory.
+/// </summary>
 public record JFrogGenericArtifactsUploadTask : JFrogGenericArtifactsUploadDownloadTaskBase
 {
     public JFrogGenericArtifactsUploadTask(string connection) : base("Upload", connection)
@@ -18,8 +21,10 @@ public record JFrogGenericArtifactsUploadTask : JFrogGenericArtifactsUploadDownl
 
     /// <summary>
     /// Select if you'd like to Specify the distribution/component/architecture of the package.
-    /// Used for Debian packages only.
     /// </summary>
+    /// <remarks>
+    /// Used for Debian packages only.
+    /// </remarks>
     [YamlIgnore]
     public bool? SetDebianProps
     {
@@ -27,7 +32,12 @@ public record JFrogGenericArtifactsUploadTask : JFrogGenericArtifactsUploadDownl
         init => SetProperty("setDebianProps", value);
     }
 
-
+    /// <summary>
+    /// The distribution of the package.
+    /// </summary>
+    /// <remarks>
+    /// Used for Debian packages only.
+    /// </remarks>
     [YamlIgnore]
     public string? DebDistribution
     {
@@ -42,6 +52,12 @@ public record JFrogGenericArtifactsUploadTask : JFrogGenericArtifactsUploadDownl
         }
     }
 
+    /// <summary>
+    /// Package component
+    /// </summary>
+    /// <remarks>
+    /// Used for Debian packages only.
+    /// </remarks>
     [YamlIgnore]
     public string? DebComponent
     {
@@ -56,6 +72,12 @@ public record JFrogGenericArtifactsUploadTask : JFrogGenericArtifactsUploadDownl
         }
     }
 
+    /// <summary>
+    /// The architecture of the package.
+    /// </summary>
+    /// <remarks>
+    /// Used for Debian packages only.
+    /// </remarks>
     [YamlIgnore]
     public string? DebArchitecture
     {
@@ -72,8 +94,10 @@ public record JFrogGenericArtifactsUploadTask : JFrogGenericArtifactsUploadDownl
 
     /// <summary>
     /// If you'd like to sync artifacts after the upload, set a specific path in Artifactory. Leave empty otherwise.
-    /// If set, after the upload completes, this path will include only the artifacts uploaded during this upload operation. The other files under this path will be deleted.
     /// </summary>
+    /// <remarks>
+    /// If set, after the upload completes, this path will include only the artifacts uploaded during this upload operation. The other files under this path will be deleted.
+    /// </remarks>
     [YamlIgnore]
     public string? SyncDeletesPathRemote
     {

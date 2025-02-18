@@ -14,7 +14,7 @@ public record JFrogPublishBuildInfoTask : AzureDevOpsTask
     }
 
     /// <summary>
-    /// Artifactory service to be used by this task.
+    /// Artifactory service connection to be used by this task.
     /// </summary>
     [YamlIgnore]
     public string Connection
@@ -25,8 +25,8 @@ public record JFrogPublishBuildInfoTask : AzureDevOpsTask
 
     /// <summary>
     /// Build name.
-    /// To use the default build name of the pipeline, set the field to '$(Build.DefinitionName)'.
     /// </summary>
+    /// <remarks>To use the default build name of the pipeline, set the field to '$(Build.DefinitionName)'.</remarks>
     [YamlIgnore]
     public string? BuildName
     {
@@ -39,8 +39,8 @@ public record JFrogPublishBuildInfoTask : AzureDevOpsTask
 
     /// <summary>
     /// Build number.
-    /// To use the default build number of the pipeline, set the field to '$(Build.BuildNumber)'.
     /// </summary>
+    /// <remarks>To use the default build number of the pipeline, set the field to '$(Build.BuildNumber)'.</remarks>
     [YamlIgnore]
     public string? BuildNumber
     {

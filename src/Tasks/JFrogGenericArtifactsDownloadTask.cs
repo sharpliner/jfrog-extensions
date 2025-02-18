@@ -2,7 +2,7 @@
 
 
 /// <summary>
-/// 
+/// The JFrog Generic Artifacts Download task
 /// </summary>
 /// <remarks>
 /// Based on <see href="https://www.jfrog.com/confluence/display/JFROG/Artifactory+Generic+Download">JFrog Documentation</see>.
@@ -13,7 +13,9 @@ public record JFrogGenericArtifactsDownloadTask : JFrogGenericArtifactsUploadDow
     {
     }
 
-    private static readonly int[] ValidSplitCounts = [0, 1, 2,3,4,5,6,7,8,9,10,12,14,16,18,20,25,30,35,40,45,50,60,70,80,90,100
+    private static readonly int[] ValidSplitCounts =
+    [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 18, 20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 90, 100
     ];
 
     /// <summary>
