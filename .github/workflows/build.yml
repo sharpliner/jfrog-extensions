@@ -15,6 +15,9 @@ jobs:
       pull-requests: write
       packages: write
 
+    outputs:
+      GitBuildVersionSimple: ${{ steps.version.outputs.GitBuildVersionSimple }}
+
     env:
       Configuration: Release
       RepositoryUrl: https://github.com/${{ github.repository }}
@@ -36,6 +39,10 @@ jobs:
       - name: Build
         run: dotnet build --no-restore -p:RepositoryUrl=${{ env.RepositoryUrl }} /bl
 
+      - name: Get version
+        id: version
+        run: echo "GitBuildVersionSimple=$GitBuildVersionSimple" >> "$GITHUB_OUTPUT"
+
       - name: Test
         run: dotnet test --no-build --verbosity normal --logger trx
 
@@ -48,6 +55,48 @@ jobs:
       - name: Pack
         run: dotnet pack --no-build -p:RepositoryUrl=${{ env.RepositoryUrl }}
 
+      - name: NuGet package
+        uses: actions/upload-artifact@v4
+        with:
+          name: nupkg
+          path: src/Tasks/bin/Release/*.nupkg
+
       - name: Publish the package to GPR
         run: dotnet nuget push "src/Tasks/bin/Release/*.nupkg" --source ${{ env.source-url }} -k ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
         if: github.ref == 'refs/heads/main'
+
+  update_release_draft:
+    name: Update release draft
+    runs-on: ubuntu-latest
+    needs: [build]
+
+    if: github.ref == 'refs/heads/main' # Running this job only for main branch
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: release-drafter/release-drafter@v6
+        id: create_release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          version: ${{ needs.build.outputs.GitBuildVersionSimple }}
+
+      - uses: actions/download-artifact@v4
+
+      - name: Display structure of downloaded files
+        run: ls -R
+
+      - name: Dump steps context
+        env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+        run: echo "$STEPS_CONTEXT"
+
+      - name: Upload assets
+        uses: xresloader/upload-to-github-release@v1
+        with:
+          file: "./nupkg/**/*.nupkg"
+          delete_file: "*.nupkg"
+          overwrite: true
+          release_id: ${{ steps.create_release.outputs.id }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
