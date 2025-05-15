@@ -8,10 +8,18 @@
     <RootNamespace>Sharpliner.Extensions.JFrogTasks</RootNamespace>
     <Authors>flcdrg</Authors>
     <PackageProjectUrl>https://github.com/flcdrg/sharpliner-tasks-jfrog</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/flcdrg/sharpliner-tasks-jfrog</RepositoryUrl>
     <PackageTags>Sharpliner;Azure DevOps;Azure Pipelines;</PackageTags>
     <Description>A library that implements tasks for use with Sharpliner to generate Azure Pipelines YAML
 for the JFrog Azure DevOps extension.</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  
+	  <!-- SourceLink -->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <DebugType>embedded</DebugType>
+
   </PropertyGroup>
 
   <ItemGroup>
@@ -34,5 +42,7 @@ for the JFrog Azure DevOps extension.</Description>
       <PackagePath>buildTransitive\</PackagePath>
     </None>
   </ItemGroup>
-
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 </Project>
