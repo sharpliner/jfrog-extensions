@@ -7,9 +7,9 @@
     <AssemblyName>Sharpliner.Extensions.JFrog</AssemblyName>
     <RootNamespace>Sharpliner.Extensions.JFrogTasks</RootNamespace>
     <Authors>flcdrg</Authors>
-    <PackageProjectUrl>https://github.com/flcdrg/sharpliner-tasks-jfrog</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/sharpliner/jfrog-extensions</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/flcdrg/sharpliner-tasks-jfrog</RepositoryUrl>
+    <RepositoryUrl>https://github.com/sharpliner/jfrog-extensions</RepositoryUrl>
     <PackageTags>Sharpliner;Azure DevOps;Azure Pipelines;</PackageTags>
     <Description>A library that implements tasks for use with Sharpliner to generate Azure Pipelines YAML
 for the JFrog Azure DevOps extension.</Description>
