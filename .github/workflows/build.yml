@@ -34,7 +34,9 @@ jobs:
           dotnet-version: 9.0.x
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: |
+          dotnet restore
+          dotnet tool restore
 
       - name: Build
         run: dotnet build --no-restore -p:RepositoryUrl=${{ env.RepositoryUrl }} /bl
@@ -51,6 +53,10 @@ jobs:
         if: always()
         with:
           trx_files: "${{ github.workspace }}/**/*.trx"
+
+      # Regenerate the README file so that it is compatible with NuGet.org Markdown restrictions
+      - name: README
+        run: dotnet mdsnippets --omit-snippet-links true
 
       - name: Pack
         run: dotnet pack --no-build -p:RepositoryUrl=${{ env.RepositoryUrl }}
