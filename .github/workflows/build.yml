@@ -52,7 +52,7 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v2.20.0
         if: always()
         with:
-          trx_files: "${{ github.workspace }}/**/*.trx"
+          files: "${{ github.workspace }}/**/*.trx"
 
       # Regenerate the README file so that it is compatible with NuGet.org Markdown restrictions
       - name: README
@@ -100,7 +100,7 @@ jobs:
       - name: Upload assets
         uses: xresloader/upload-to-github-release@v1
         with:
-          file: "./nupkg/**/*.nupkg"
+          file: "./*.nupkg"
           delete_file: "*.nupkg"
           overwrite: true
           release_id: ${{ steps.create_release.outputs.id }}
