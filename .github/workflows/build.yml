@@ -87,7 +87,7 @@ jobs:
         with:
           version: ${{ needs.build.outputs.GitBuildVersionSimple }}
 
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v6
 
       - name: Display structure of downloaded files
         run: ls -R
