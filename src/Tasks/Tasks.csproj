@@ -33,7 +33,7 @@ for the JFrog Azure DevOps extension.</Description>
     </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sharpliner" Version="1.8.4" />
+    <PackageReference Include="Sharpliner" Version="1.8.5" />
   </ItemGroup>
 
   <ItemGroup>
