@@ -62,7 +62,7 @@ jobs:
         run: dotnet pack --no-build -p:RepositoryUrl=${{ env.RepositoryUrl }}
 
       - name: NuGet package
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: nupkg
           path: src/Tasks/bin/Release/*.nupkg
