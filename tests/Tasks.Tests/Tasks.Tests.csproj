@@ -31,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.3.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.4.0" />
     <PackageReference Include="Sharpliner" Version="1.8.10" />
     <PackageReference Include="Verify.Xunitv3" Version="31.15.0" />
     <PackageReference Include="xunit.v3" Version="3.2.2" />
